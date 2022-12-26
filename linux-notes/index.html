@@ -3,18 +3,18 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://rdallagnolo.github.io/about/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://rdallagnolo.github.io/linux-notes/" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>In ante - Tech notes</title>
+    <title>Linux - Tech notes</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "In ante";
-        var mkdocs_page_input_path = "about.md";
-        var mkdocs_page_url = "/about/";
+        var mkdocs_page_name = "Linux";
+        var mkdocs_page_input_path = "linux-notes.md";
+        var mkdocs_page_url = "/linux-notes/";
       </script>
     
     <script src="../js/jquery-3.6.0.min.js" defer></script>
@@ -48,8 +48,12 @@
                 <li class="toctree-l1"><a class="reference internal" href="../python-notes/">Python</a>
                 </li>
               </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../linux-notes/">Linux</a>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">Linux</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#archiving-in-linux">Archiving in linux</a>
+    </li>
+    </ul>
                 </li>
               </ul>
               <ul>
@@ -74,7 +78,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li>
-      <li>In ante</li>
+      <li>Linux</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -83,46 +87,23 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="in-ante">In ante</h1>
-<h2 id="tantique-imis-desuetudine-quem-ultoris-dulci-agitata">Tantique imis desuetudine quem ultoris dulci agitata</h2>
-<p>Lorem markdownum deo Solis nec luget videbor submovet octonis duces lumen mille
-Burin tum quae inclite verterat illic. Caelestibus mite volucrem meum venimus
-iunxit. Effugit ante nam qua bracchia agros: deus ibi herbas Iunonia officium.
-Commissas diu neque aura nobis nox, et dixi nonus perque his vires nisi
-puerpera.</p>
-<ol>
-<li>Quoque ille luctus sub dabit quid utero</li>
-<li>Spumis talibus fugae nebulis taurum</li>
-<li>Arma admovit litore</li>
-</ol>
-<h2 id="conclamat-tetenderat-aetatis">Conclamat tetenderat aetatis</h2>
-<p>Ab haberet paternum et prima fiducia nobis non. Vocavit per ira et terram vires
-emisitque saepe ore adveniens saltem. Dea fessi in tamen artis.</p>
-<pre><code>serverAvatarKeywords = module_wais_pop + interlaced + lifo_sprite;
-pharming_file /= dcim(subdirectory);
-if (vector) {
-    schema_wpa_safe.firewall_record_mamp.schemaTroll(543337 + lion,
-            scrolling(backlink_vertical));
-    fsbRfidDashboard.bounce = broadband(1, blogMac);
-} else {
-    powerWordWebmaster.ispRosetta += crop(100, hardening_orientation,
-            sampleFile);
-    saas_app *= 5;
-    bloatwareUri = ldap_process_netbios;
-}
-</code></pre>
-<h2 id="perhorruit-erat-delamentatur-areos-invideatis-dentibus-aequor">Perhorruit erat delamentatur Areos invideatis dentibus aequor</h2>
-<p>Est vixque prima arvis: atro ante Thetis sermonibus me. Opes umida leni:
-rubescere est, auget sunt novo iniuria in mirata, quondam videtur volucresque
-telum. Teres tuae focus dicere addit saecula sermonibus solum postque tempora.
-Imagine fontes, potiere, vera umbras circumfusaeque, illa resonantia atque quid.</p>
-<p>Natus cupiens muro coluisse et datus foret Sidonide quisque caelicolae ferum.
-Posita sed Mnemosynen munere celsoque, et minimum, testatos, vidit aetas.</p>
-<p>Erat mecum, montis. Cruentum quo, plaustri fumo auro; genus ira piget sic tenet
-<a href="http://erectos.io/">abiit fluentia</a> falcato est. Lyncum non inque si inpia.</p>
+                <h1 id="linux-tips-and-trics">Linux tips and trics</h1>
+<p>A small collection of notes about usefull linux commands.</p>
+<h2 id="archiving-in-linux">Archiving in linux</h2>
+<p><code>tar</code> - is an archiving program designed to store and extract files from an archive file known as tarfile
+to create it, move files you intend to bzip2 into a directory, for instance <code>/home/user/test</code>, and run the following command:</p>
+<p><code>tar -cjf tarfilename.tar.bz2 teste/</code></p>
+<p>It will create (c), bzip2 (j), the files (f) in that directory <code>teste/</code> into the tarfile <code>tarfilename.tar.bz2</code></p>
+<p>to extract a tarfile into a directory, simple run the following command</p>
+<p><code>tar –xjf tarfilename.tar.bz2 teste/</code></p>
+<p>It will extract (x) bzipped (j) files (f) in the tarfile back to the directory teste/</p>
               
             </div>
           </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../python-notes/" class="btn btn-neutral float-left" title="Python"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../conda-notes/" class="btn btn-neutral float-right" title="Conda">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
 
   <hr/>
 
@@ -144,6 +125,10 @@ Posita sed Mnemosynen munere celsoque, et minimum, testatos, vidit aetas.</p>
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
+      <span><a href="../python-notes/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../conda-notes/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

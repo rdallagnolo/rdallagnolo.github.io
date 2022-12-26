@@ -3,18 +3,18 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://rdallagnolo.github.io/about/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://rdallagnolo.github.io/conda-notes/" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>In ante - Tech notes</title>
+    <title>Conda - Tech notes</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "In ante";
-        var mkdocs_page_input_path = "about.md";
-        var mkdocs_page_url = "/about/";
+        var mkdocs_page_name = "Conda";
+        var mkdocs_page_input_path = "conda-notes.md";
+        var mkdocs_page_url = "/conda-notes/";
       </script>
     
     <script src="../js/jquery-3.6.0.min.js" defer></script>
@@ -52,8 +52,18 @@
                 <li class="toctree-l1"><a class="reference internal" href="../linux-notes/">Linux</a>
                 </li>
               </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../conda-notes/">Conda</a>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">Conda</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#managing-conda">Managing Conda</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#conda-environments">Conda environments</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#creating-environments">Creating environments</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#installing-packages">Installing packages</a>
+    </li>
+    </ul>
                 </li>
               </ul>
               <ul>
@@ -74,7 +84,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li>
-      <li>In ante</li>
+      <li>Conda</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -83,46 +93,50 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="in-ante">In ante</h1>
-<h2 id="tantique-imis-desuetudine-quem-ultoris-dulci-agitata">Tantique imis desuetudine quem ultoris dulci agitata</h2>
-<p>Lorem markdownum deo Solis nec luget videbor submovet octonis duces lumen mille
-Burin tum quae inclite verterat illic. Caelestibus mite volucrem meum venimus
-iunxit. Effugit ante nam qua bracchia agros: deus ibi herbas Iunonia officium.
-Commissas diu neque aura nobis nox, et dixi nonus perque his vires nisi
-puerpera.</p>
-<ol>
-<li>Quoque ille luctus sub dabit quid utero</li>
-<li>Spumis talibus fugae nebulis taurum</li>
-<li>Arma admovit litore</li>
-</ol>
-<h2 id="conclamat-tetenderat-aetatis">Conclamat tetenderat aetatis</h2>
-<p>Ab haberet paternum et prima fiducia nobis non. Vocavit per ira et terram vires
-emisitque saepe ore adveniens saltem. Dea fessi in tamen artis.</p>
-<pre><code>serverAvatarKeywords = module_wais_pop + interlaced + lifo_sprite;
-pharming_file /= dcim(subdirectory);
-if (vector) {
-    schema_wpa_safe.firewall_record_mamp.schemaTroll(543337 + lion,
-            scrolling(backlink_vertical));
-    fsbRfidDashboard.bounce = broadband(1, blogMac);
-} else {
-    powerWordWebmaster.ispRosetta += crop(100, hardening_orientation,
-            sampleFile);
-    saas_app *= 5;
-    bloatwareUri = ldap_process_netbios;
-}
-</code></pre>
-<h2 id="perhorruit-erat-delamentatur-areos-invideatis-dentibus-aequor">Perhorruit erat delamentatur Areos invideatis dentibus aequor</h2>
-<p>Est vixque prima arvis: atro ante Thetis sermonibus me. Opes umida leni:
-rubescere est, auget sunt novo iniuria in mirata, quondam videtur volucresque
-telum. Teres tuae focus dicere addit saecula sermonibus solum postque tempora.
-Imagine fontes, potiere, vera umbras circumfusaeque, illa resonantia atque quid.</p>
-<p>Natus cupiens muro coluisse et datus foret Sidonide quisque caelicolae ferum.
-Posita sed Mnemosynen munere celsoque, et minimum, testatos, vidit aetas.</p>
-<p>Erat mecum, montis. Cruentum quo, plaustri fumo auro; genus ira piget sic tenet
-<a href="http://erectos.io/">abiit fluentia</a> falcato est. Lyncum non inque si inpia.</p>
+                <h1 id="conda-tips-and-trics">Conda tips and trics</h1>
+<p>Conda is an open source package management system and environment management system that runs on Windows, macOS, and Linux. Conda quickly installs, runs and updates packages and their dependencies. Conda easily creates, saves, loads and switches between environments on your local computer. It was created for Python programs, but it can package and distribute software for any language.</p>
+<h2 id="managing-conda">Managing Conda</h2>
+<ul>
+<li><code>conda --version</code></li>
+<li><code>conda info</code></li>
+<li><code>conda -v</code></li>
+<li><code>conda update conda</code> updates conda</li>
+<li><code>conda list</code> list installed packages</li>
+<li><code>conda update -n hero --all</code> updates all conda packages in the 'hero' environment</li>
+<li><code>conda update --all</code> same as above in the current directory</li>
+</ul>
+<h2 id="conda-environments">Conda environments</h2>
+<ul>
+<li><code>conda env list</code></li>
+<li><code>conda activate myenv</code></li>
+<li><code>conda deactivate myenv</code></li>
+<li><code>conda remove --name myenv --all</code></li>
+<li><code>conda create --name myclone --clone myenv</code></li>
+<li><code>conda info --envs</code></li>
+</ul>
+<h2 id="creating-environments">Creating environments</h2>
+<ul>
+<li><code>conda create --name myenv</code></li>
+<li><code>conda create -n myenv python=3.6</code> with a specific python version</li>
+<li><code>conda create -n myenv scipy</code> with packages</li>
+<li><code>conda create -n myenv scipy=0.15.0</code> with specific package versions</li>
+<li><code>conda env export &gt; environment.yml</code> export the yml</li>
+<li><code>conda env create -f environment.yml</code> create and environment from yml file</li>
+</ul>
+<h2 id="installing-packages">Installing packages</h2>
+<ul>
+<li><code>conda search pandas</code> searching for the package in the repositories</li>
+<li><code>conda install scipy</code> install the package in the current environment</li>
+<li><code>conda install --name myenv scipy</code> to install it in myenv environment</li>
+<li><code>conda install scipy=0.15.0</code> install a specific version of a package</li>
+</ul>
               
             </div>
           </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../linux-notes/" class="btn btn-neutral float-left" title="Linux"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../git-notes/" class="btn btn-neutral float-right" title="Git">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
 
   <hr/>
 
@@ -144,6 +158,10 @@ Posita sed Mnemosynen munere celsoque, et minimum, testatos, vidit aetas.</p>
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
+      <span><a href="../linux-notes/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../git-notes/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
