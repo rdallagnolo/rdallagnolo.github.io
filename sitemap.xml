@@ -26,6 +26,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://rdallagnolo.github.io/markdown-notes/</loc>
+         <lastmod>2022-12-26</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://rdallagnolo.github.io/navigation-notes/</loc>
          <lastmod>2022-12-26</lastmod>
          <changefreq>daily</changefreq>
