@@ -3,18 +3,18 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://rdallagnolo.github.io/navigation-notes/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://rdallagnolo.github.io/bash/" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>[Protected] Nav - Tech notes</title>
+    <title>Bash shell tips and trics - Tech notes</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "[Protected] Nav";
-        var mkdocs_page_input_path = "navigation-notes.md";
-        var mkdocs_page_url = "/navigation-notes/";
+        var mkdocs_page_name = "Bash shell tips and trics";
+        var mkdocs_page_input_path = "bash.md";
+        var mkdocs_page_url = "/bash/";
       </script>
     
     <script src="../js/jquery-3.6.0.min.js" defer></script>
@@ -64,10 +64,8 @@
                 <li class="toctree-l1"><a class="reference internal" href="../markdown-notes/">Markdown</a>
                 </li>
               </ul>
-              <ul class="current">
-                <li class="toctree-l1 current"><a class="reference internal current" href="./">[Protected] Nav</a>
-    <ul class="current">
-    </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../navigation-notes/">[Protected] Nav</a>
                 </li>
               </ul>
       </div>
@@ -84,9 +82,9 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li>
-      <li>[Protected] Nav</li>
+      <li>Bash shell tips and trics</li>
     <li class="wy-breadcrumbs-aside">
-          <a href="https://github.com/rdallagnolo/edit/master/docs/navigation-notes.md" class="icon icon-github"> Edit on GitHub</a>
+          <a href="https://github.com/rdallagnolo/edit/master/docs/bash.md" class="icon icon-github"> Edit on GitHub</a>
     </li>
   </ul>
   <hr/>
@@ -94,36 +92,28 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <div id="mkdocs-encrypted-content" style="display:none">zL0CnuGfYFd47OT9k48sYQ==;cg6ycfM1uTcRZRZBLItqAiEtedI5S0qzPdMlSYO3VCeX8io0bsMChOS45xvsXcatQz0vpLTqMeHi7xVWeOHNrA==;^</div>
-<div id="mkdocs-decrypted-content">
-    <form id="mkdocs-decrypt-form">
-        <h1>This content is protected with AES encryption. </h1>
-        <p>Contact your administrator for access to this page.</p>
-        <input type="password" id="mkdocs-content-password" placeholder="Use CTRL+ENTER to provide global password" />
-        
-        <p id="mkdocs-decrypt-msg"></p>
-    </form>
-</div>
-
-<script type="text/javascript">
-var encryptcontent_path = 'navigation-notes/';
-var decryption_failure_message = "Invalid password.";
-</script>
-
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/core.js"></script>
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/enc-base64.js"></script>
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/cipher-core.js"></script>
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/pad-nopadding.js"></script>
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/md5.js"></script>
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/aes.js"></script>
-<script type="text/javascript" src="../assets/javascripts/decrypt-contents.js" defer></script>
-
+                <h1 id="bash-shell-tips-and-trics">Bash shell tips and trics</h1>
+<h2 id="hiding-top-panel-in-elementaryos">Hiding top panel in elementaryOS</h2>
+<p>To hide the top panel in elementaryOS the shell script below have to be saved to  a text file and named withouth any file extension:</p>
+<pre><code>#!/bin/bash
+result=`ps aux | grep -i &quot;io.elementary.wingpanel&quot; | grep -v &quot;grep&quot; | wc -l`
+if [ $result -ge 1 ]
+   then
+        killall io.elementary.wingpanel &amp;&gt; /dev/null;
+        killall io.elementary.wingpanel &amp;&gt; /dev/null;
+        killall io.elementary.wingpanel &amp;&gt; /dev/null;
+    else
+        io.elementary.wingpanel &amp;&gt; /dev/null &amp;
+fi
+</code></pre>
+<p>Change the file permission so it can be executed by the user:</p>
+<p><code>chmod 755 hide_top_panel</code></p>
+<p>Save the file to <code>/bin</code>.</p>
+<p>Add a custom shortcut to elementaryOS. Go to System Settings -&gt; Hardware -&gt; Keyboard -&gt; Shortcuts tab -&gt; Custom. Select a keyboard shortcut of you preference and use the same name as the file name in <code>/bin</code>.</p>
+<p><img alt="hide_top_panel" src="../img/hide_top_panel.png" /></p>
               
             </div>
           </div><footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../markdown-notes/" class="btn btn-neutral float-left" title="Markdown"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-    </div>
 
   <hr/>
 
@@ -148,8 +138,6 @@ var decryption_failure_message = "Invalid password.";
           <a href="https://github.com/rdallagnolo" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
         </span>
     
-    
-      <span><a href="../markdown-notes/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
   </span>
