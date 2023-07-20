@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://rdallagnolo.github.io/git-notes/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Git - Rod's Notes</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Git";
+        var mkdocs_page_input_path = "git-notes.md";
+        var mkdocs_page_url = "/git-notes/";
+      </script>
+    
+    <script src="../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Rod's Notes
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../home/">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../python-notes/">Python</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../linux-notes/">Linux</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../conda-notes/">Conda</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">Git</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#setting-up-local-and-remote-repositories">Setting up local and remote repositories</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#usefull-commands-to-know">Usefull commands to know</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#configuring-global-settings">Configuring global settings</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#git-branches">Git branches</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../markdown-notes/">Markdown</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../bash-notes/">Bash</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Rod's Notes</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a> &raquo;</li>
+      <li>Git</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/rdallagnolo/edit/master/docs/git-notes.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="git">Git</h1>
+<p>Check if git is atually installed in your system.</p>
+<pre><code>~$ git --version                                    
+</code></pre>
+<h2 id="setting-up-local-and-remote-repositories">Setting up local and remote repositories</h2>
+<p>Create a new repo on github.com. Do not add a README or License just yet. Open a terminal at your local project directory and run:</p>
+<pre><code>$ git init -b main                                  
+</code></pre>
+<p>The local direcotry in now a Git repo. You can add some initial files to your local repo, like the example below:</p>
+<pre><code>$ echo &quot;# project_palmer-penguins&quot; &gt;&gt; README.md
+</code></pre>
+<p>A good practice is to create a <code>.gitigonre</code> file and have it as a space to add itens you don~t want to track with git.</p>
+<pre><code>$ touch .gitignore
+</code></pre>
+<p>Next step is to <code>add</code> the files to the stage area of your local repo and then <code>commit</code> the changes. Remember that a commit is a check-point in time of the changes made.</p>
+<pre><code>$ git add README.md                                 
+$ git commit -m &quot;initial commit&quot;                      
+</code></pre>
+<p>Linking your local repo with you github account is straight forward</p>
+<pre><code>$ git remote add origin  &lt;REMOTE_URL&gt;
+$ git push -u origin main               
+</code></pre>
+<h2 id="usefull-commands-to-know">Usefull commands to know</h2>
+<p>Checking your local repo status </p>
+<pre><code>$ git status
+</code></pre>
+<p>Adding files to the stage area of your local repo can ve done in different ways.</p>
+<pre><code>$ git add &lt;file1&gt; &lt;file2&gt;
+$ git add .
+</code></pre>
+<p>To unstage the file or files:</p>
+<pre><code>$ git rm --cached &lt;file1&gt;     # to unstaged the file
+</code></pre>
+<p>If you want to have a look at the log of commits in your repo you can use the following methods:</p>
+<pre><code>$ git log
+$ git log --oneline
+</code></pre>
+<h2 id="configuring-global-settings">Configuring global settings</h2>
+<p>Check current configuration with:</p>
+<pre><code>$ git config user.name
+$ git config user.email
+</code></pre>
+<p>To set email and user name:</p>
+<pre><code>$ git config --global user.name &quot;User Name&quot;
+$ git config --global user.email &quot;email@email.com&quot;
+</code></pre>
+<h2 id="git-branches">Git branches</h2>
+<blockquote>
+<p>navigate to your local repo<br>
+make sure local repo and remote repo are up to date<br>
+run the following command to start a new branch:<br></p>
+</blockquote>
+<p>T0 create a local new branch and to push it to your GitHub repository run:</p>
+<pre><code>$ git checkout -b &lt;your-new-branch-name&gt;        
+$ git push origin &lt;your-new-branch-name&gt; 
+</code></pre>
+<p>Once your work is done you can merge your branch back into the main branch. Use <code>git merge</code> to merge the specified branch into the currently active branch.
+Just maae sure you are on the branch that we are merging into. See steps below</p>
+<pre><code>$ git checkout main
+</code></pre>
+<p>Pull the remote main changes to the local main branch</p>
+<pre><code>$ git pull origin main
+</code></pre>
+<p>Merge your branch to the currently active branch</p>
+<pre><code>git merge &lt;your-new-branch-name&gt;
+</code></pre>
+<p>To verify branch history</p>
+<pre><code>$ git log --all --decorate --oneline --graph
+</code></pre>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../conda-notes/" class="btn btn-neutral float-left" title="Conda"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../markdown-notes/" class="btn btn-neutral float-right" title="Markdown">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/rdallagnolo" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../conda-notes/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../markdown-notes/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
