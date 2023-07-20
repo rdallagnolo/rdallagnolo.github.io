@@ -59,19 +59,13 @@
               <ul class="current">
                 <li class="toctree-l1 current"><a class="reference internal current" href="./">Git</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#basic-commands">Basic commands</a>
+    <li class="toctree-l2"><a class="reference internal" href="#setting-up-local-and-remote-repositories">Setting up local and remote repositories</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#linking-local-repo-to-remote-repo">Linking local repo to remote repo</a>
+    <li class="toctree-l2"><a class="reference internal" href="#usefull-commands-to-know">Usefull commands to know</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#configuring-global-variables">Configuring global variables</a>
+    <li class="toctree-l2"><a class="reference internal" href="#configuring-global-settings">Configuring global settings</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#working-with-branches">Working with branches</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#creating-a-new-branch">Creating a new branch</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#merging-branches">Merging branches</a>
-    </li>
-        </ul>
+    <li class="toctree-l2"><a class="reference internal" href="#git-branches">Git branches</a>
     </li>
     </ul>
                 </li>
@@ -108,66 +102,75 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="git-tips-and-tricks">Git tips and tricks</h1>
-<h2 id="basic-commands">Basic commands</h2>
-<ul>
-<li><code>git --version</code> checks the version of git installed</li>
-<li><code>git status</code> to check status of your repo</li>
-<li><code>git init</code> to initialize a repo. Run once per repo</li>
-<li><code>git add file1 file2</code> adds your file(s) to the 'stage' area</li>
-<li><code>git add .</code> will stages all changes at once</li>
-<li><code>gir rm --cached file1</code> to unstaged the file</li>
-<li><code>git commit -m "my message"</code> to commit the files in the stage area to the repo(.git folder). </li>
-<li><code>git log</code> log of commits for the repo</li>
-<li><code>git log --oneline</code> one liner log</li>
-<li><code>git push -u origin main</code> to push the changes to the remote repo</li>
-<li><code>git pull origin main</code></li>
-</ul>
-<h2 id="linking-local-repo-to-remote-repo">Linking local repo to remote repo</h2>
-<ul>
-<li>Create a new repo on github.com. </li>
-<li>
-<p>Do not add a README or License just yet.</p>
-</li>
-<li>
-<p>Open a terminal at your local project</p>
-</li>
-<li><code>git init -b main</code> will initialize the local direcotry as a Git repo</li>
-<li><code>echo "# project_palmer-penguins" &gt;&gt; README.md</code> create the README.md file</li>
-<li><code>git add README.md</code> Add the file in your local repo.</li>
-<li><code>git commit -m "First commit"</code> Commit the file</li>
-<li><code>git remote add origin  &lt;REMOTE_URL&gt;</code> Links you local directory to you github repo    </li>
-<li><code>git push origin main</code> Push the changes in your local repository to GitHub.com.</li>
-</ul>
-<h2 id="configuring-global-variables">Configuring global variables</h2>
-<ul>
-<li><code>git config --global user.name "User Name"</code></li>
-<li><code>git config user.name</code> to check user name configured</li>
-<li><code>git config --global user.email "user@email.com"</code></li>
-<li><code>git config user.email</code> to check your email</li>
-</ul>
-<h2 id="working-with-branches">Working with branches</h2>
-<ul>
-<li><code>git branch</code> to list all branches</li>
-<li><code>git checkout &lt;branch-name&gt;</code> to switch to branch <branch-name></li>
-</ul>
-<h3 id="creating-a-new-branch">Creating a new branch</h3>
-<ul>
-<li>navigate to your local repo</li>
-<li>make sure local repo and remote repo are up to date</li>
-<li>run the following command to start a new branch:</li>
-<li><code>git checkout -b &lt;your-new-branch-name&gt;</code> Your new branch is now created, but it’s only available on your local machine. </li>
-<li><code>git push origin &lt;your-new-branch-name&gt;</code> Push your new branch to the origin repository and work on the new one until you are ready for a push request</li>
-</ul>
+                <h1 id="git">Git</h1>
+<p>Check if git is atually installed in your system.</p>
+<pre><code>~$ git --version                                    
+</code></pre>
+<h2 id="setting-up-local-and-remote-repositories">Setting up local and remote repositories</h2>
+<p>Create a new repo on github.com. Do not add a README or License just yet. Open a terminal at your local project directory and run:</p>
+<pre><code>$ git init -b main                                  
+</code></pre>
+<p>The local direcotry in now a Git repo. You can add some initial files to your local repo, like the example below:</p>
+<pre><code>$ echo &quot;# project_palmer-penguins&quot; &gt;&gt; README.md
+</code></pre>
+<p>A good practice is to create a <code>.gitigonre</code> file and have it as a space to add itens you don~t want to track with git.</p>
+<pre><code>$ touch .gitignore
+</code></pre>
+<p>Next step is to <code>add</code> the files to the stage area of your local repo and then <code>commit</code> the changes. Remember that a commit is a check-point in time of the changes made.</p>
+<pre><code>$ git add README.md                                 
+$ git commit -m &quot;initial commit&quot;                      
+</code></pre>
+<p>Linking your local repo with you github account is straight forward</p>
+<pre><code>$ git remote add origin  &lt;REMOTE_URL&gt;
+$ git push -u origin main               
+</code></pre>
+<h2 id="usefull-commands-to-know">Usefull commands to know</h2>
+<p>Checking your local repo status </p>
+<pre><code>$ git status
+</code></pre>
+<p>Adding files to the stage area of your local repo can ve done in different ways.</p>
+<pre><code>$ git add &lt;file1&gt; &lt;file2&gt;
+$ git add .
+</code></pre>
+<p>To unstage the file or files:</p>
+<pre><code>$ git rm --cached &lt;file1&gt;     # to unstaged the file
+</code></pre>
+<p>If you want to have a look at the log of commits in your repo you can use the following methods:</p>
+<pre><code>$ git log
+$ git log --oneline
+</code></pre>
+<h2 id="configuring-global-settings">Configuring global settings</h2>
+<p>Check current configuration with:</p>
+<pre><code>$ git config user.name
+$ git config user.email
+</code></pre>
+<p>To set email and user name:</p>
+<pre><code>$ git config --global user.name &quot;User Name&quot;
+$ git config --global user.email &quot;email@email.com&quot;
+</code></pre>
+<h2 id="git-branches">Git branches</h2>
+<blockquote>
+<p>navigate to your local repo<br>
+make sure local repo and remote repo are up to date<br>
+run the following command to start a new branch:<br></p>
+</blockquote>
+<p>T0 create a local new branch and to push it to your GitHub repository run:</p>
+<pre><code>$ git checkout -b &lt;your-new-branch-name&gt;        
+$ git push origin &lt;your-new-branch-name&gt; 
+</code></pre>
 <p>Once your work is done you can merge your branch back into the main branch. Use <code>git merge</code> to merge the specified branch into the currently active branch.
-Just maake sure you are on the branch that we are merging into. See steps below</p>
-<h3 id="merging-branches">Merging branches</h3>
-<ul>
-<li><code>git checkout main</code> switch back to the <span style="color: brown;">local main branch</span></li>
-<li><code>git pull origin main</code> pull the <span style="color: seagreen;">remote main</span> changes to the <span style="color: brown;">local main branch</span></li>
-<li><code>git merge &lt;your-new-branch-name&gt;</code> merge your branch to the currently active branch</li>
-<li><code>git log --all --decorate --oneline --graph</code> verify branch history (optional)</li>
-</ul>
+Just maae sure you are on the branch that we are merging into. See steps below</p>
+<pre><code>$ git checkout main
+</code></pre>
+<p>Pull the remote main changes to the local main branch</p>
+<pre><code>$ git pull origin main
+</code></pre>
+<p>Merge your branch to the currently active branch</p>
+<pre><code>git merge &lt;your-new-branch-name&gt;
+</code></pre>
+<p>To verify branch history</p>
+<pre><code>$ git log --all --decorate --oneline --graph
+</code></pre>
               
             </div>
           </div><footer>
