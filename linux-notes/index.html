@@ -53,6 +53,12 @@
     <ul class="current">
     <li class="toctree-l2"><a class="reference internal" href="#archiving-in-linux">Archiving in linux</a>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#source-lists">Source lists</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#sourceslist-file-and-sourceslistd-directory">sources.list file and sources.list.d directory</a>
+    </li>
+        </ul>
+    </li>
     </ul>
                 </li>
               </ul>
@@ -106,6 +112,40 @@ to create it, move files you intend to bzip2 into a directory, for instance <cod
 <p>to extract a tarfile into a directory, simple run the following command</p>
 <p><code>tar –xjf tarfilename.tar.bz2 teste/</code></p>
 <p>It will extract (x) bzipped (j) files (f) in the tarfile back to the directory teste/</p>
+<h2 id="source-lists">Source lists</h2>
+<p>A repository is basically a web server that has packages (software). The package manager gets these packages from the repositories.</p>
+<p>How does the apt package manager know the address of the repositories? The answer is sources.list file.
+What does sources.list do?</p>
+<p>It’s basically a text file that contains the repository details. Each uncommented line represents a separate repository.</p>
+<p>The lines follow a specific format, though. It’s usually composed of this:</p>
+<blockquote>
+<p>archive-type repository-url distribution component</p>
+</blockquote>
+<p>I know that’s not easy to understand. Let’s take a look at one of the actual lines:</p>
+<blockquote>
+<p>deb http://archive.ubuntu.com/ubuntu impish main restricted</p>
+</blockquote>
+<p><code>Archive type</code> is deb here, meaning you’ll get precompiled .deb packages. Another archive type is deb-src which provides the actual source code but usually it is commented out (not used by the system) because a regular user doesn’t need the source code of an application. The deb file lets you install the package.</p>
+<p><code>Repository URL</code> is http://archive.ubuntu.com/ubuntu. In fact, you can visit this URL and see various available folders (that contain the package details).</p>
+<p>Next, the <code>distribution</code> is impish. On the actual repository, it is represented as dists. It’s because there are several categories of repositories like impish-security (for security packages), impish-backports (for backported packages) etc. This is why it’s not just the distribution name.</p>
+<p>So, you can go to this URL http://archive.ubuntu.com/ubuntu/dists/ and see that impish (codename for Ubuntu 21.10) is one of the available folders among many other choices here.</p>
+<p>The <code>component</code> is one of the five types of default Ubuntu repositories.</p>
+<p>You can combine more than one (if available) in the same line, actually. Instead of writing two lines like this:</p>
+<blockquote>
+<p>deb http://archive.ubuntu.com/ubuntu impish main<br>
+deb http://archive.ubuntu.com/ubuntu impish restricted<br></p>
+</blockquote>
+<p>You write two of them together like this:</p>
+<blockquote>
+<p>deb http://archive.ubuntu.com/ubuntu impish main restricted</p>
+</blockquote>
+<p>This means when you have a repository detail like "deb http://archive.ubuntu.com/ubuntu impish main" in the sources.list, it gets software packages details stored at http://archive.ubuntu.com/ubuntu/dists/impish/main/</p>
+<p>The distribution code name is important. Now imagine if someone is using an old, unsupported version of Ubuntu like Ubuntu 20.10 codenamed Groovy Gorilla.</p>
+<p>The <code>sources.list</code> file will contain repository URL like "deb http://archive.ubuntu.com/ubuntu groovy main". And then it becomes problematic because if you visit http://archive.ubuntu.com/ubuntu/dists URL, you won’t find groovy folder here. Since Ubuntu 20.10 is no longer maintained, its folder has been removed. As a result, Ubuntu will show an error like ‘release file not found’ or ‘error 404 repository not found’.</p>
+<h3 id="sourceslist-file-and-sourceslistd-directory">sources.list file and sources.list.d directory</h3>
+<p>If you look at the /etc/apt directory, you’ll notice a directory called sources.list.d.</p>
+<p>The idea is that the primary sources.list file is for the official Ubuntu repositories and for any external repositories and PPA, you add a .list file (with the repository details) in this sources.list.d directory. </p>
+<p>This makes managing the repositories easier as you don’t mess up with the default repositories. The external repositories can be easily disabled (by adding # in front of the repository details) or removed (by removing its corresponding .list file).</p>
               
             </div>
           </div><footer>
